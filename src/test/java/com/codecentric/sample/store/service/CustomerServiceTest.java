@@ -52,7 +52,7 @@ public class CustomerServiceTest {
 
 
     @Test
-    public void testPLZAddressCombination() {
+    public void testPLZAddressCombination() throws InterruptedException {
 
         //
         // Given
@@ -68,12 +68,13 @@ public class CustomerServiceTest {
         //
         // Then
         //
+        Thread.sleep(5000);
         assertThat(address, is("47891_221B Bakerstreet"));
     }
 
 
     @Test
-    public void testPLZAddressCombinationIncludingHostValue() {
+    public void testPLZAddressCombinationIncludingHostValue() throws InterruptedException {
 
         //
         // Given
@@ -101,6 +102,7 @@ public class CustomerServiceTest {
         //
         // Then
         //
+        Thread.sleep(3000);
         Mockito.verify(addressService, times(1)).updateExternalSystems(any(Customer.class));
         assertThat(address, is("47891_224B Bakerstreet_TestHostValue"));
     }

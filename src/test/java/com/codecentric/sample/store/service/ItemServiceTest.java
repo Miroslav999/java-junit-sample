@@ -44,7 +44,7 @@ public class ItemServiceTest {
 
 
     @Test
-    public void getItemNameUpperCase() {
+    public void getItemNameUpperCase() throws InterruptedException {
 
         //
         // Given
@@ -61,11 +61,12 @@ public class ItemServiceTest {
         // Then
         //
         verify(itemRepository, times(1)).findById("it1");
+        Thread.sleep(3000);
         assertThat(result, is("ITEM 1"));
     }
 
     @Test
-    public void calculationOfAveragePriceForAllItems() {
+    public void calculationOfAveragePriceForAllItems() throws InterruptedException {
 
         //
         // Given
@@ -87,6 +88,7 @@ public class ItemServiceTest {
         //
         verify(itemRepository, times(1)).readAllItems();
         verifyStatic(times(1));
+        Thread.sleep(5000);
         StaticService.getMultiplicator();
 
         assertThat(averagePriceForAllItems, is(2000*5));
