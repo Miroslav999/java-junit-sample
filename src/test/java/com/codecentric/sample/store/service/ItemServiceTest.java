@@ -3,6 +3,7 @@ package com.codecentric.sample.store.service;
 import com.codecentric.sample.store.model.Item;
 import com.codecentric.sample.store.repository.ItemRepository;
 import com.codecentric.sample.store.service.tools.StaticService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -29,7 +31,7 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({StaticService.class})
 public class ItemServiceTest {
-
+	private Random random = new Random();
     @Mock
     private ItemRepository itemRepository;
 
@@ -44,7 +46,7 @@ public class ItemServiceTest {
 
 
     @Test
-    public void getItemNameUpperCase() {
+    public void getItemNameUpperCase() throws InterruptedException {
 
         //
         // Given
@@ -56,7 +58,7 @@ public class ItemServiceTest {
         // When
         //
         String result = itemService.getItemNameUpperCase("it1");
-
+        Thread.sleep(random.nextInt(10000));
         //
         // Then
         //
@@ -65,7 +67,7 @@ public class ItemServiceTest {
     }
 
     @Test
-    public void calculationOfAveragePriceForAllItems() {
+    public void calculationOfAveragePriceForAllItems() throws InterruptedException {
 
         //
         // Given
@@ -88,12 +90,12 @@ public class ItemServiceTest {
         verify(itemRepository, times(1)).readAllItems();
         verifyStatic(times(1));
         StaticService.getMultiplicator();
-
+        Thread.sleep(random.nextInt(10000));
         assertThat(averagePriceForAllItems, is(2000*5));
     }
 
     @Test
-    public void readItemDescriptionWithoutIOException() throws IOException {
+    public void readItemDescriptionWithoutIOException() throws IOException, InterruptedException {
 
         //
         // Given
@@ -113,12 +115,12 @@ public class ItemServiceTest {
         //
         verifyStatic(times(1));
         StaticService.readFile(fileName);
-
+        Thread.sleep(random.nextInt(10000));
         assertThat(value, equalTo("Dummy"));
     }
 
     @Test
-    public void readItemDescriptionWithIOException() throws IOException {
+    public void readItemDescriptionWithIOException() throws IOException, InterruptedException {
 
         //
         // Given
@@ -138,7 +140,7 @@ public class ItemServiceTest {
         //
         verifyStatic(times(1));
         StaticService.readFile(fileName);
-
+        Thread.sleep(random.nextInt(10000));
         assertThat(value, is(""));
     }
 }

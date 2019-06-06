@@ -3,6 +3,7 @@ package com.codecentric.sample.store.service;
 import com.codecentric.sample.store.model.Item;
 import com.codecentric.sample.store.repository.ItemRepository;
 import com.codecentric.sample.store.service.tools.StaticService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -33,7 +35,7 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @PowerMockRunnerDelegate(Parameterized.class)
 @PrepareForTest({StaticService.class})
 public class RateServiceTest {
-
+	private Random random = new Random();
     @Mock
     private ItemRepository itemRepositoryeMock;
 
@@ -65,7 +67,7 @@ public class RateServiceTest {
 
 
     @Test
-    public void rateCalculationTest() {
+    public void rateCalculationTest() throws InterruptedException {
 
         //
         // Given
@@ -85,7 +87,7 @@ public class RateServiceTest {
         verify(itemRepositoryeMock, times(1)).findById(item.getId());
         verifyStatic(times(1));
         StaticService.getMultiplicator();
-
+        Thread.sleep(random.nextInt(10000));
         assertThat(result, is(expected));
     }
 }
