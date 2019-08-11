@@ -30,7 +30,7 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({StaticService.class})
-public class ItemServiceTest {
+public class MyItemServiceTest {
 	private Random random = new Random();
     @Mock
     private ItemRepository itemRepository;

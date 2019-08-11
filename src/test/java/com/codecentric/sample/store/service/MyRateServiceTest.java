@@ -34,7 +34,7 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @RunWith(PowerMockRunner.class)
 @PowerMockRunnerDelegate(Parameterized.class)
 @PrepareForTest({StaticService.class})
-public class RateServiceTest {
+public class MyRateServiceTest {
 	private Random random = new Random();
     @Mock
     private ItemRepository itemRepositoryeMock;

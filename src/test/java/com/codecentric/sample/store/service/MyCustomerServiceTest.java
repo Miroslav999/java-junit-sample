@@ -33,7 +33,7 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
-public class CustomerServiceTest {
+public class MyCustomerServiceTest {
 	// Комментарий
     @Spy
     private AddressService addressService;

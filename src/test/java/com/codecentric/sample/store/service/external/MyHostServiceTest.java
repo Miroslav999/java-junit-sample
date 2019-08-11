@@ -11,7 +11,7 @@ import java.io.IOException;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
-public class HostServiceTest {
+public class MyHostServiceTest {
 
     @Mock
     private ExternalSystemProxy externalSystemProxy;
