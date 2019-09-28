@@ -4,6 +4,7 @@ import com.codecentric.sample.store.model.Item;
 import com.codecentric.sample.store.repository.ItemRepository;
 import com.codecentric.sample.store.service.tools.StaticService;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -142,5 +143,12 @@ public class MyItemServiceTest {
         StaticService.readFile(fileName);
         Thread.sleep(random.nextInt(10000));
         assertThat(value, is(""));
+    }
+    
+    @Test
+    public void failedReadItemDescriptionWithIOException() throws IOException, InterruptedException {
+
+    	Assert.fail();
+       
     }
 }
