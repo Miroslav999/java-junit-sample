@@ -153,7 +153,7 @@ public class CopyOfMyItemServiceTest {
     @Test
     public void failedReadItemDescriptionWithIOException() throws IOException, InterruptedException {
 
-//    	Assert.fail();
+    	Assert.fail();
        
     }
 }
